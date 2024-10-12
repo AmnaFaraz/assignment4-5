@@ -2,26 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body, html {
+  background-color: #F7F9F9; 
+  font-family: Arial, sans-serif;
+  padding: 0;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.header {
+  background-color: white; 
+  padding: 20px;
+  text-align: center;
+}
+
+#root, #__next {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the content area takes up the full height */
+}
+
+main {
+  flex-grow: 1; /* Ensures main takes up all the available space */
+  padding: 1rem; /* Optional: Add padding if you want some spacing */
+}
+
+.footer {
+  background-color: #2081C3; 
+  padding: 15px;
+  text-align: center;
+}
+
+.button-primary {
+  background-color: #78D5D7; 
+  color: #FFFFFF;
+  border: 2px solid #63D2FF;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.button-primary:hover {
+  background-color: white; 
+  color: #BED8D4; 
+}
+
+h1, a {
+  color: white; 
+  margin: 0;
+}
+
+p, h2, h3 {
+  color: #2081C3; 
+  text-decoration: none;
+}
+
+.card {
+  background-color: #BED8D4; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #78D5D7; 
+  margin: 15px;
+}
+
+/* Adjust for tablets */
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* Make cards full width on tablets */
+    padding: 15px; /* Reduce padding */
+  }
+
+  .container {
+    flex-direction: column; /* Stack elements vertically */
+    padding: 15px;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Adjust for mobile */
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* Full width on mobile */
+    padding: 10px; /* Smaller padding for mobile */
+  }
+
+  .header, .footer {
+    padding: 10px; /* Reduce header and footer padding */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Smaller font size for headings */
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+
+
+/* Animation for sliding down from the top */
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    opacity: 0;
   }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animation class to be applied to the header or navbar */
+.animate-slide-top {
+  animation: slide-top 0.5s ease forwards;
 }
